@@ -6,7 +6,15 @@ window.addEventListener("load", function(){
 	let textDiv = document.getElementById("textDiv");
 	let submitDiv = document.getElementById("submitDiv");
 	
+	const radioNum = 7;
+	const chkbxoNum = 7;
+	const selectNum = 7;
+	const textNum = 1;
 	
+	createRadio(radioDiv, radioNum);
+	createCheckbox(checkboxDiv, chkbxoNum);
+	createSelect(selectDiv, selectNum);
+	createText(textDiv, textNum);	
 	
 	
 	let form = new Form();
@@ -14,7 +22,6 @@ window.addEventListener("load", function(){
 	let eventBus = new EventBus();
 	
 	console.log(form, tab, eventBus);
-	
 	
 	
 	
