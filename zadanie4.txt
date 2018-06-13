@@ -1,0 +1,21 @@
+Napisaæ prosty ekran.
+Ekran powinien sk³adaæ siê z:
+1. Dwóch kontrolerów: lewy z formularzem i prawy z tablic¹ wyników.
+2. Formularz: 
+- 4-5 pól wszystkie inne (input, checkbox, radio, select) 
+- formularz zawiera ró¿ne walidacje na wszystkich polach (walidacjê ¿yw¹ i nie ¿yw¹)
+- formularz zawiera przycisk "zapisz", po którym serializujemy model i wysy³amy model by pobraæ dane.
+3. Kontroler z tabel¹ (typ simple lub infinite):
+- ka¿dy wiersz zawiera 2 przyciski, które:
+- pierwszy przycisk wypisuje pod formularzem model dowi¹zany do wiersza, w który kliknêliœmy,
+- drugi przycisk powoduje wywo³anie popupa, który wyœwietla model i pyta o potwierdzenie.
+4. Komunikacjê miêdzy kontrolerami implementujemy na dwa sposoby:
+- wykorzystuj¹c obiekt EventBus.
+- korzystaj¹c z metody sendMessageTo().
+
+
+Ze wzgledu na brak dostepu do kodu biblioteki, w ktorej bedziemy pracowac, zrobmy tak:
+- formularz (kontroler) wyswietla model w consoli,
+- formularz wysyla model do tabeli (kontroler),
+- tabela strzela do BE, mozesz wykorzystac jedno z otwartych, np. https://jsonplaceholder.typicode.com/ 
+- dane wyswietlasz w tabeli
