@@ -3,7 +3,7 @@
 	global.EventBus = function(){
 		
 		
-	}
+	};
 	return EventBus;
 	
 })(this);

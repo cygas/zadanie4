@@ -3,7 +3,7 @@
 	global.Tab = function(){
 		
 		
-	}
+	};
 	return Tab;
 	
 })(this);

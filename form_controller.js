@@ -2,7 +2,7 @@
 	
 	global.Form = function(){
 		
-	}
+	};
 	return Form;
 	
 })(this);
