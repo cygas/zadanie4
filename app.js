@@ -6,16 +6,25 @@ window.addEventListener("load", function(){
 	let textDiv = document.getElementById("textDiv");
 	let submitDiv = document.getElementById("submitDiv");
 	
-	const radioNum = 7;
-	const chkbxoNum = 7;
-	const selectNum = 7;
+	const radioNum = 10;
+	const chkbxoNum = 10;
+	const selectNum = 10;
 	const textNum = 1;
+	const url = "https://jsonplaceholder.typicode.com/users";
+	
 	
 	createRadio(radioDiv, radioNum);
 	createCheckbox(checkboxDiv, chkbxoNum);
-	createSelect(selectDiv, selectNum);
-	createText(textDiv, textNum);	
+	createSelect(selectDiv, selectNum, 190);
+	createText(textDiv, textNum, 190);	
 	
+	let arr = [];
+	fetchData(url, arr);
+	setTimeout(function(){ 
+		addName(arr, radioDiv, "name");
+		addName(arr, checkboxDiv, "username");
+		addOption(arr, selectDiv, "email");
+		}, 500);
 	
 	let form = new Form();
 	let tab = new Tab();
@@ -23,50 +32,5 @@ window.addEventListener("load", function(){
 	
 	console.log(form, tab, eventBus);
 	
-	
-	
-	/*
-	fetch('https://jsonplaceholder.typicode.com/posts/1')
-	.then(response => response.json())
-	.then(json => console.log(json));
-  
-	function loadXMLDoc() {
-		var xmlhttp = new XMLHttpRequest();
-
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
-			   if (xmlhttp.status == 200) {
-				   console.log(xmlhttp.responseText);
-			   }
-			   else if (xmlhttp.status == 400) {
-				  alert('There was an error 400');
-			   }
-			   else {
-				   alert('something else other than 200 was returned');
-			   }
-			}
-		};
-
-		xmlhttp.open("GET", "https://jsonplaceholder.typicode.com/comments?postId=1", true);
-		xmlhttp.send();
-	}
-	loadXMLDoc();
-	
-*/
-
-/*
-function callAjax(url, callback){
-    var xmlhttp;
-    // compatible with IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function(){
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            callback(xmlhttp.responseText);
-        }
-    }
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}
-*/
 	
 });
