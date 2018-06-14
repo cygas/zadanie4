@@ -1,33 +1,23 @@
 (function(global){
-	global.fetchData = function(url, arr){
+	
+	global.fetchData = function(url, arr, radioDiv, radioNum, checkboxDiv, chkbxoNum, selectDiv, selectNum, textDiv, textNum){
 		fetch(url)
 		.then(function(response){			
 			return response.json();
 		})
 		.then(json => {
-			console.log(json);
+			console.log(json);  //to będzie trzeba usunąć
 			json.map(entry => {
 				arr.push(entry);
-			});			
+			});		
+			createRadio(radioDiv, radioNum);
+			createCheckbox(checkboxDiv, chkbxoNum);
+			createSelect(selectDiv, selectNum, 190);
+			createText(textDiv, textNum, 190);	
+			addName(arr, radioDiv, "name");
+			addName(arr, checkboxDiv, "username");
+			addOption(arr, selectDiv, "email");			
 		});	
 	};
 	
-	global.dataFetch = function(url, arr) {
-		var xmlhttp = new XMLHttpRequest();
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
-			   if (xmlhttp.status == 200) {
-				   console.log(xmlhttp.responseText);
-			   }
-			   else if (xmlhttp.status == 400) {
-				  alert('There was an error 400');
-			   }
-			   else {
-				   alert('something else other than 200 was returned');
-			   }
-			}
-		};
-		xmlhttp.open("GET", url, true);
-		xmlhttp.send();			
-	};
 })(this);

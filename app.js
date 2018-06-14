@@ -1,10 +1,12 @@
 window.addEventListener("load", function(){	
 	
+	let inputsDiv = document.getElementById("inputsDiv");
 	let radioDiv = document.getElementById("radioDiv");
 	let checkboxDiv = document.getElementById("checkboxDiv");
 	let selectDiv = document.getElementById("selectDiv");
 	let textDiv = document.getElementById("textDiv");
 	let submitDiv = document.getElementById("submitDiv");
+	let arr = [];
 	
 	const radioNum = 10;
 	const chkbxoNum = 10;
@@ -12,25 +14,14 @@ window.addEventListener("load", function(){
 	const textNum = 1;
 	const url = "https://jsonplaceholder.typicode.com/users";
 	
-	
-	createRadio(radioDiv, radioNum);
-	createCheckbox(checkboxDiv, chkbxoNum);
-	createSelect(selectDiv, selectNum, 190);
-	createText(textDiv, textNum, 190);	
-	
-	let arr = [];
-	fetchData(url, arr);
-	setTimeout(function(){ 
-		addName(arr, radioDiv, "name");
-		addName(arr, checkboxDiv, "username");
-		addOption(arr, selectDiv, "email");
-		}, 500);
+	fetchData(url, arr, radioDiv, radioNum, checkboxDiv, chkbxoNum, selectDiv, selectNum, textDiv, textNum);
 	
 	let form = new Form();
-	let tab = new Tab();
-	let eventBus = new EventBus();
-	
-	console.log(form, tab, eventBus);
-	
-	
+		
+		
+	let submit = document.getElementById("submit");
+	submit.addEventListener("click", function(){
+		form.inputsValue(inputsDiv);
+		console.log(form.obj);
+	});
 });

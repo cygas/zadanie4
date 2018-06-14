@@ -31,8 +31,7 @@
 			this.eventType = eventType;
 			this.callbacks = [callback];
 		}
-			
-	};
-	return EventBus;
+		//return EventBus;
+	};	
 	
 })(this);
