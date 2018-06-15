@@ -14,9 +14,9 @@
 			createCheckbox(checkboxDiv, chkbxoNum);
 			createSelect(selectDiv, selectNum, 190);
 			createText(textDiv, textNum, 190);	
-			addName(arr, radioDiv, "name");
-			addName(arr, checkboxDiv, "username");
-			addOption(arr, selectDiv, "email");			
+			addName(arr, radioDiv, "name", radioNum);
+			addName(arr, checkboxDiv, "username", chkbxoNum);
+			addOption(arr, selectDiv, "email", selectNum);			
 		});	
 	};
 	

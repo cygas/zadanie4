@@ -63,6 +63,12 @@
 			textDiv.appendChild(textBox);
 		}		
 	}
+	global.createPara = function(div, txt){
+		let para = document.createElement("p");
+		let text = document.createTextNode(txt);
+		para.appendChild(text);
+		div.appendChild(para);
+	}
 	
 
 })(this);

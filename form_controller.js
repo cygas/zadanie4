@@ -3,8 +3,6 @@
 	global.Form = function(){
 		
 		this.inputsValue = function(div){
-			//ZRÓB WALIDACJĘ, ŻE POLA NIE MOGĄ BYĆ PUSTE
-			
 			let inputArr = div.getElementsByTagName("input");
 			let selectArr = div.getElementsByTagName("select");
 			
@@ -25,6 +23,7 @@
 			}
 			this.obj.email = selectArr[0].options[selectArr[0].selectedIndex].innerHTML;
 			
+			return this;			
 		};
 		
 		this.obj = {};
