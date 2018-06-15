@@ -1,72 +1,49 @@
 window.addEventListener("load", function(){	
 	
+	let comment = document.getElementById("comment");
+	let inputsDiv = document.getElementById("inputsDiv");
 	let radioDiv = document.getElementById("radioDiv");
 	let checkboxDiv = document.getElementById("checkboxDiv");
 	let selectDiv = document.getElementById("selectDiv");
 	let textDiv = document.getElementById("textDiv");
 	let submitDiv = document.getElementById("submitDiv");
+	let submit = document.getElementById("submit");
+	let arr = [];
+	let jsonObj;
 	
-	const radioNum = 7;
-	const chkbxoNum = 7;
-	const selectNum = 7;
+	const radioNum = 10;
+	const chkbxoNum = 10;
+	const selectNum = 10;
 	const textNum = 1;
-	
-	createRadio(radioDiv, radioNum);
-	createCheckbox(checkboxDiv, chkbxoNum);
-	createSelect(selectDiv, selectNum);
-	createText(textDiv, textNum);	
-	
-	
-	let form = new Form();
-	let tab = new Tab();
-	let eventBus = new EventBus();
-	
-	console.log(form, tab, eventBus);
+	const url = "https://jsonplaceholder.typicode.com/users";
+	const nameText = "wybierz opcję z pola 'name'";
+	const userText = "wybierz opcję z pola 'userName'";
+	const idText = "wprowadź numer id";
 	
 	
 	
-	/*
-	fetch('https://jsonplaceholder.typicode.com/posts/1')
-	.then(response => response.json())
-	.then(json => console.log(json));
-  
-	function loadXMLDoc() {
-		var xmlhttp = new XMLHttpRequest();
-
-		xmlhttp.onreadystatechange = function() {
-			if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
-			   if (xmlhttp.status == 200) {
-				   console.log(xmlhttp.responseText);
-			   }
-			   else if (xmlhttp.status == 400) {
-				  alert('There was an error 400');
-			   }
-			   else {
-				   alert('something else other than 200 was returned');
-			   }
+	fetchData(url, arr, radioDiv, radioNum, checkboxDiv, chkbxoNum, selectDiv, selectNum, textDiv, textNum);
+	let form = new Form();	
+	let bus = new Bus();
+	
+	submit.addEventListener("click", function(){
+		comment.innerHTML = "";
+		form.inputsValue(inputsDiv);
+		if(checkName(form) && checkUser(form) && checkId(form)){
+			//obj do JSON i transport do eventBus
+			jsonObj = JSON.stringify(form.obj);
+			console.log(jsonObj);
+		}else{		
+			if(!checkName(form)){
+				createPara(comment, nameText);
+			}		
+			if(!checkUser(form)){
+				createPara(comment, userText);
 			}
-		};
-
-		xmlhttp.open("GET", "https://jsonplaceholder.typicode.com/comments?postId=1", true);
-		xmlhttp.send();
-	}
-	loadXMLDoc();
-	
-*/
-
-/*
-function callAjax(url, callback){
-    var xmlhttp;
-    // compatible with IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp = new XMLHttpRequest();
-    xmlhttp.onreadystatechange = function(){
-        if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
-            callback(xmlhttp.responseText);
-        }
-    }
-    xmlhttp.open("GET", url, true);
-    xmlhttp.send();
-}
-*/
+			if(!checkId(form)){
+				createPara(comment, idText);
+			}
+		}
+	});
 	
 });

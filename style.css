@@ -2,42 +2,91 @@ body{
 	margin-left: auto;
 	margin-right: auto;
 	text-align: center;
+	font-family: Arial;
+	font-size: 14px;
+}
+main > div{
+	height: 80px;
+}
+main > div p{
+	margin-top: 5px;
+	margin-bottom: 0;
+	color: red;
+	font-weight: bold;
 }
 form{
-	margin-top: 50px;
+	margin-top: 10px;
 	margin-left: auto;
 	margin-right: auto;
-	text-align: center;
 	background: #bbb;
-	width: 700px;
+	width: 900px;
 	border: 2px solid #777;
 	border-radius: 7px;	
 	-webkit-box-shadow: 0px 0px 17px 3px rgba(186,186,186,0.7);
 	-moz-box-shadow: 0px 0px 17px 3px rgba(186,186,186,0.7);
 	box-shadow: 0px 0px 17px 3px rgba(186,186,186,0.7);
 }
+form > div > div > p{
+	margin-bottom: 8px;
+	font-weight: bold;
+}
 #inputsDiv{
 	display: inline-block;
 	width: auto;
 }
+
+
+/* ---radioDiv---*/
 #radioDiv{
 	margin-top: 30px;
-	width: 90px;
+	width: 200px;
+	text-align: left;
 }
+#radioDiv div{
+	margin-top: 2px;
+}
+#radioDiv div input{
+	margin-left: 0;
+	float: left;
+}
+#radioDiv div label{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+/* ---checkboxDiv---*/
 #checkboxDiv{
 	margin-top: 30px;
-	width: 88px;
+	width: 200px;
+	text-align: left;
 }
+#checkboxDiv div input{
+	margin-left: 0;
+}
+#checkboxDiv div label{
+	display: inline-block;
+	margin-left: 10px;
+}
+
+
+/* ---selectDiv---*/
 #selectDiv{
 	margin-top: 30px;
-	width: 90px;
+	width: 190px;
+	text-align: left;
 }
 #selectDiv select{
 	width: 90px;
 }
+
+/* ---textDiv---*/
 #textDiv{
 	margin-top: 30px;
+	text-align: left;
 }
+
+
+/* ---submitDiv---*/
 #submitDiv{
 	margin-top: 30px;
 }
@@ -56,6 +105,20 @@ form{
 	cursor: pointer;
 	background: #2dc569;
 }
+
+/* ---tableDiv---*/
 #tableDiv{
 	display: inline-block;	
+}
+#tableDiv table{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;	
+	border-collapse: collapse;	
+}
+#tableDiv table th,td{
+	
+    border: 1px solid black;
+    border-collapse: collapse;
+	width: 120px;
 }

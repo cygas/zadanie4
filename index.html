@@ -7,21 +7,30 @@
 		<script src="form_controller.js" type="text/javascript"></script>		
 		<script src="table_controller.js" type="text/javascript"></script>	
 		<script src="event_bus.js" type="text/javascript"></script>	
-		<script src="createElement.js" type="text/javascript"></script>		
+		<script src="create_element.js" type="text/javascript"></script>	
+		<script src="fetch.js" type="text/javascript"></script>			
+		<script src="add_value.js" type="text/javascript"></script>			
+		<script src="check_validation.js" type="text/javascript"></script>			
 		<script src="app.js" type="text/javascript"></script>				
 		<link href="style.css" rel="stylesheet" type="text/css"/>
 	</head>
 	<body>
 		<main>			
+			<div id="comment">
+			</div>
 			<form onsubmit="event.preventDefault()">
 				<div id="inputsDiv">
-					<div id="radioDiv">							
+					<div id="radioDiv">		
+						<p>name</p>
 					</div>
-					<div id="checkboxDiv">						
+					<div id="checkboxDiv">		
+						<p>userName</p>
 					</div>
-					<div id="selectDiv">						
+					<div id="selectDiv">	
+						<p>e-mail</p>
 					</div>
 					<div id="textDiv">
+						<p>id</p>
 					</div>
 					<div id="submitDiv">
 						<input type="submit" id="submit"/>
@@ -29,10 +38,10 @@
 				</div>
 				<div id="tableDiv">
 					<table id="table">
-						<th>postId</th>
-						<th>id</th>
-						<th>name</th>
-						<th>email</th>
+						<th>street</th>
+						<th>suite</th>
+						<th>city</th>
+						<th>zip-code</th>
 					</table>	
 				</div>
 			</form>				
