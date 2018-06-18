@@ -124,3 +124,58 @@ form > div > div > p{
     border-collapse: collapse;
 	width: 120px;
 }
+.tableButton1, .tableButton2{
+	cursor: pointer;
+	border: none;
+	border-radius: 2px;
+	margin-left: 3px;
+	background: #3ed67a;
+	color: #fff;
+}
+.tableButton1:hover, .tableButton2:hover{
+	background: #2dc569;
+}
+
+/* ---popUp--- */
+#popup{
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	top: 0;	
+	background: rgba(0,0,0, 0.6);	
+}
+
+.nonePop{
+	display: none;
+}
+.yesPop{
+	display: block;
+}
+
+.popup-content{
+	margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.popup-content input[type="submit"]{
+	height: 100px;
+	width: 200px;
+	font-size: 30px;
+	border: none;
+	border-radius: 5px;
+	background: #3ed67a;
+	color: #fff;
+	letter-spacing: 2px;
+	cursor: pointer;
+}
+.popup-content input[type="submit"]:hover{
+	background: #2dc569;
+}.popup-content p{
+	font-size: 15px;
+	font-weight: bold;
+	color: #fff;
+	margin-bottom: 20px;
+}

@@ -12,6 +12,8 @@ window.addEventListener("load", function(){
 		submitDiv: document.getElementById("submitDiv"),
 		submit: document.getElementById("submit"),
 		table: document.getElementById("table"),
+		popDiv: document.getElementById("popup"),
+		popBut: document.getElementById("submit-popup"),
 		arr: [],
 		
 		radioNum: 10,
@@ -27,9 +29,10 @@ window.addEventListener("load", function(){
 	
 	fetchData(config);
 	let bus = new EventBus();		
-	let form = new Form();	
+	let form = new Form({bus: bus});	
 	//let form = new Form({bus: bus});	to ma wyglądać tak 
-	let tab = new Tab(bus);
+	//tab też tak samo, jak wyżej Tab(bus);
+	let tab = new Tab({bus: bus});
 	tab.comment = config.comment;
 	//tab.badData = wrongUser;
 	tab.table = config.table;
@@ -42,7 +45,6 @@ window.addEventListener("load", function(){
 	config.submit.addEventListener("click", function(){
 		config.comment.innerHTML = "";
 		form.inputsValue(inputsDiv);
-		form.writeIntoConsole();
 		if(checkName(form) && checkUser(form) && checkId(form)){			
 			
 			bus.post("string", form.jsonObj);			
@@ -58,6 +60,9 @@ window.addEventListener("load", function(){
 				createPara(config.comment, config.idText);
 			}
 		}
+	});
+	config.popBut.addEventListener("click", function(){
+		config.popDiv.className = "nonePop";
 	});
 	
 });

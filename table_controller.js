@@ -1,7 +1,7 @@
 (function(global){
 	
-	global.Tab = function(){
-				//bus.subscribe("string", this.sendRequest); <---- to powinno tu być
+	global.Tab = function({bus: bus}){
+		//bus.subscribe("string", this.sendRequest);// <---- to powinno tu być
 				
 		this.sendRequest = function(jsonObj){			
 			let badData = "użytkownik o podanych parametrach nie istnieje w bazie";
