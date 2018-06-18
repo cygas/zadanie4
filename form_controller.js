@@ -1,7 +1,6 @@
 (function(global){
 	
 	global.Form = function(){
-		
 		this.inputsValue = function(div){
 			let inputArr = div.getElementsByTagName("input");
 			let selectArr = div.getElementsByTagName("select");
@@ -23,25 +22,24 @@
 			}
 			this.obj.email = selectArr[0].options[selectArr[0].selectedIndex].innerHTML;
 			this.jsonObj = JSON.stringify(this.obj);
-			this.writeIntoConsole(this.jsonObj);
+			
 			
 			return this;			
 		};
 		
 		this.obj = {};
-		
+		this.jsonObj = "";
+		/*
 		this.writeIntoConsole = function(obj){
 			console.log(obj);
 			return this;
 		};
-		
-		this.jsonObj = "";
-		
+		*/		
 	};
-	/*
-	Form.prototype.writeIntoConsole = function(obj) {
-		...
-	}
-	*/
+	
+	Form.prototype.writeIntoConsole = function() {
+		console.log(this.jsonObj);
+	};
+	
 		
 })(this);

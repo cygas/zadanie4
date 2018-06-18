@@ -1,21 +1,21 @@
 (function(global){
 	
-	global.fetchData = function(url, arr, radioDiv, radioNum, checkboxDiv, chkbxoNum, selectDiv, selectNum, textDiv, textNum){
-		fetch(url)
+	global.fetchData = function(config){
+		fetch(config.url)
 		.then(function(response){			
 			return response.json();
 		})
 		.then(json => {
 			json.map(entry => {
-				arr.push(entry);
+				config.arr.push(entry);
 			});		
-			createRadio(radioDiv, radioNum);
-			createCheckbox(checkboxDiv, chkbxoNum);
-			createSelect(selectDiv, selectNum, 190);
-			createText(textDiv, textNum, 190);	
-			addName(arr, radioDiv, "name", radioNum);
-			addName(arr, checkboxDiv, "username", chkbxoNum);
-			addOption(arr, selectDiv, "email", selectNum);			
+			createRadio(config.radioDiv, config.radioNum);
+			createCheckbox(config.checkboxDiv, config.chkbxoNum);
+			createSelect(config.selectDiv, config.selectNum, 190);
+			createText(config.textDiv, config.textNum, 190);	
+			addName(config.arr, config.radioDiv, "name", config.radioNum);
+			addName(config.arr, config.checkboxDiv, "username", config.chkbxoNum);
+			addOption(config.arr, config.selectDiv, "email", config.selectNum);			
 		});	
 	};
 	
