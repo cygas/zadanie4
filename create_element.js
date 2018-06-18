@@ -62,13 +62,30 @@
 			textBox.style = "width: " +width+"px";
 			textDiv.appendChild(textBox);
 		}		
-	}
+	};
 	global.createPara = function(div, txt){
 		let para = document.createElement("p");
 		let text = document.createTextNode(txt);
 		para.appendChild(text);
 		div.appendChild(para);
-	}
+	};
+	global.createRow = function(div, obj){
+		let row = div.insertRow();
+		let cell0 = row.insertCell(0);
+		let cell1 = row.insertCell(1);
+		let cell2 = row.insertCell(2);
+		let cell3 = row.insertCell(3);			
+		
+		let text0 = document.createTextNode(obj.address.street);
+		let text1 = document.createTextNode(obj.address.suite);
+		let text2 = document.createTextNode(obj.address.city);
+		let text3 = document.createTextNode(obj.address.zipcode);
+		
+		cell0.appendChild(text0);
+		cell1.appendChild(text1);
+		cell2.appendChild(text2);
+		cell3.appendChild(text3);		
+	};
 	
 
 })(this);
