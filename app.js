@@ -1,4 +1,8 @@
 window.addEventListener("load", function(){	
+
+	//window.MainContainer = new App();
+	
+	
 	
 	let comment = document.getElementById("comment");
 	let inputsDiv = document.getElementById("inputsDiv");
@@ -8,8 +12,8 @@ window.addEventListener("load", function(){
 	let textDiv = document.getElementById("textDiv");
 	let submitDiv = document.getElementById("submitDiv");
 	let submit = document.getElementById("submit");
+	let table = document.getElementById("table");
 	let arr = [];
-	let jsonObj;
 	
 	const radioNum = 10;
 	const chkbxoNum = 10;
@@ -19,20 +23,31 @@ window.addEventListener("load", function(){
 	const nameText = "wybierz opcję z pola 'name'";
 	const userText = "wybierz opcję z pola 'userName'";
 	const idText = "wprowadź numer id";
+	const wrongUser = "użytkownik o podanych parametrach nie istnieje w bazie";
 	
-	
-	
+	//tak, tak, DO POPRAWY
 	fetchData(url, arr, radioDiv, radioNum, checkboxDiv, chkbxoNum, selectDiv, selectNum, textDiv, textNum);
-	let form = new Form();	
-	let bus = new Bus();
+	let bus = new EventBus();	
 	
+	let form = new Form(bus);	
+	//let form = new Form({bus: bus});	to ma wyglądać tak 
+	let tab = new Tab(bus);
+	tab.comment = comment;
+	//tab.badData = wrongUser;
+	tab.table = table;
+	
+	
+	//to powinienem usunąć do table
+	bus.subscribe("string", tab.sendRequest);
+	
+		
 	submit.addEventListener("click", function(){
 		comment.innerHTML = "";
 		form.inputsValue(inputsDiv);
-		if(checkName(form) && checkUser(form) && checkId(form)){
-			//obj do JSON i transport do eventBus
-			jsonObj = JSON.stringify(form.obj);
-			console.log(jsonObj);
+		if(checkName(form) && checkUser(form) && checkId(form)){			
+			
+			bus.post("string", form.jsonObj);			
+			
 		}else{		
 			if(!checkName(form)){
 				createPara(comment, nameText);

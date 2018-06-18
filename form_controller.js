@@ -22,21 +22,26 @@
 				}
 			}
 			this.obj.email = selectArr[0].options[selectArr[0].selectedIndex].innerHTML;
+			this.jsonObj = JSON.stringify(this.obj);
+			this.writeIntoConsole(this.jsonObj);
 			
 			return this;			
 		};
 		
 		this.obj = {};
-			
-		this.foo = function(){
-			console.log("siema");
+		
+		this.writeIntoConsole = function(obj){
+			console.log(obj);
 			return this;
 		};
-		this.bar = function(){
-			return this;
-		};		
 		
+		this.jsonObj = "";
 		
 	};
+	/*
+	Form.prototype.writeIntoConsole = function(obj) {
+		...
+	}
+	*/
 		
 })(this);

@@ -1,9 +1,10 @@
 (function(global){
 		
 	global.EventBus = function(){
-		const eventCallbacksPairs = [];
+		const eventCallbacksPairs = []; //tu było const 
     
 		this.subscribe = function( eventType, callback ) {
+			
 			const eventCallbacksPair = findEventCallbacksPair(eventType);
 
 			if(eventCallbacksPair)
@@ -31,7 +32,7 @@
 			this.eventType = eventType;
 			this.callbacks = [callback];
 		}
-		//return EventBus;
+		
 	};	
 	
 })(this);
