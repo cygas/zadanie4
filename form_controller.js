@@ -1,7 +1,7 @@
 (function(global){
 	
-	global.Form = function({bus: bus}){
-		//bus.post("string", this.jsonObj);		
+	global.Form = function(){
+			
 		this.inputsValue = function(div){
 			let inputArr = div.getElementsByTagName("input");
 			let selectArr = div.getElementsByTagName("select");

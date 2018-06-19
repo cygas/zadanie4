@@ -27,8 +27,6 @@
 		.then(function(json){
 			let object = json[0];
 			if(object != undefined){
-				//TODO
-				//tutaj muszę dodać krotkę w tabeli z danymi i przyciski
 				createRow(table, object, createTableButton1(), createTableButton2());						
 			}else{				
 				createPara(com, txt);				

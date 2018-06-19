@@ -28,18 +28,17 @@ window.addEventListener("load", function(){
 	};
 	
 	fetchData(config);
-	let bus = new EventBus();		
-	let form = new Form({bus: bus});	
+	let bus = new EventBus();	
+	let tab = new Tab({bus: bus});	
+	let form = new Form();	
 	//let form = new Form({bus: bus});	to ma wyglądać tak 
-	//tab też tak samo, jak wyżej Tab(bus);
-	let tab = new Tab({bus: bus});
 	tab.comment = config.comment;
 	//tab.badData = wrongUser;
 	tab.table = config.table;
 	
 	
 	//to powinienem usunąć do table
-	bus.subscribe("string", tab.sendRequest);
+	//bus.subscribe("string", tab.sendRequest);
 	
 		
 	config.submit.addEventListener("click", function(){
