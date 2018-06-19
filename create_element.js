@@ -69,7 +69,7 @@
 		para.appendChild(text);
 		div.appendChild(para);
 	};
-	global.createRow = function(div, obj){
+	global.createRow = function(div, obj, button1, button2){
 		let row = div.insertRow();
 		let cell0 = row.insertCell(0);
 		let cell1 = row.insertCell(1);
@@ -84,7 +84,27 @@
 		cell0.appendChild(text0);
 		cell1.appendChild(text1);
 		cell2.appendChild(text2);
-		cell3.appendChild(text3);		
+		cell3.appendChild(text3);	
+		
+		button1.addEventListener("click", function(){writeListener(obj);});
+		button2.addEventListener("click", function(){popupListener(obj);});
+
+		row.appendChild(button1);
+		row.appendChild(button2);
+	};
+	global.createTableButton1 = function(i){
+		let button = document.createElement("input");
+		button.type = "submit";
+		button.className = "tableButton1";
+		button.value = "wypisz";		
+		return button;
+	};
+	global.createTableButton2 = function(){
+		let button = document.createElement("input");
+		button.type = "submit";
+		button.className = "tableButton2";
+		button.value = "popup";
+		return button;
 	};
 	
 

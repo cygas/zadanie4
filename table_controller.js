@@ -1,8 +1,6 @@
 (function(global){
 	
-	global.Tab = function(){
-				//bus.subscribe("string", this.sendRequest); <---- to powinno tu być
-				
+	global.Tab = function({bus: bus}){
 		this.sendRequest = function(jsonObj){			
 			let badData = "użytkownik o podanych parametrach nie istnieje w bazie";
 			this.obj = JSON.parse(jsonObj);
@@ -13,6 +11,7 @@
 			
 			return this;
 		};
+		bus.subscribe("string", this.sendRequest);
 		
 		this.obj = {};
 		this.url = "";			

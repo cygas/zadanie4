@@ -1,7 +1,7 @@
 (function(global){
 		
 	global.EventBus = function(){
-		const eventCallbacksPairs = []; //tu było const 
+		const eventCallbacksPairs = [];
     
 		this.subscribe = function( eventType, callback ) {
 			
