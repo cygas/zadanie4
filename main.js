@@ -24,21 +24,16 @@
 			nameText: "wybierz opcję z pola 'name'",
 			userText: "wybierz opcję z pola 'userName'",
 			idText: "wprowadź numer id",
-			//wrongUser: "użytkownik o podanych parametrach nie istnieje w bazie"
 		};
 		
 		fetchData(this.config);
 		this.bus = new EventBus();	
 		this.tab = new Tab({bus: this.bus});	
-		this.form = new Form();	
-		//let form = new Form({bus: bus});	to ma wyglądać tak 
+		this.form = new Form();			
 		this.tab.comment = this.config.comment;
-		//tab.badData = wrongUser;
 		this.tab.table = this.config.table;
 		
 		
-		//to powinienem usunąć do table
-		//bus.subscribe("string", tab.sendRequest);
 		let that = this;
 			
 		this.config.submit.addEventListener("click", function(){
