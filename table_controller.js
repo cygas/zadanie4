@@ -17,6 +17,17 @@
 		this.url = "";			
 		
 	};	
+	
+	global.Container = function(args){
+		this.init = function(key){
+			this.send();
+		};
+		this.send = function(){
+			
+		};
+		this.init(args);
+		
+	};
 	/*
 	global.Container = function(args) {
 		let key1;
