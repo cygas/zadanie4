@@ -1,12 +1,12 @@
 (function(global){
 	
-	global.Tab = function({bus: bus}){
+	global.Tab = function({bus: bus, config: config}){
 		this.sendRequest = function(jsonObj){			
-			let badData = "użytkownik o podanych parametrach nie istnieje w bazie";
+		
 			this.obj = JSON.parse(jsonObj);
 			this.url = "https://jsonplaceholder.typicode.com/users?" + "id=" + this.obj.id + "&name=" + this.obj.name + "&username=" + this.obj.username + "&email=" + this.obj.email;
 			
-			getData(this.url, this.comment, badData, this.table);
+			getData(this.url, config.comment, config.badData, config.table);
 			
 			
 			return this;
@@ -14,7 +14,11 @@
 		bus.subscribe("string", this.sendRequest);
 		
 		this.obj = {};
-		this.url = "";			
+		this.url = "";		
+
+		config.popBut.addEventListener("click", function(){
+			config.popDiv.className = "nonePop";
+		});		
 		
 	};	
 	

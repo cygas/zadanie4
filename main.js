@@ -24,40 +24,13 @@
 			nameText: "wybierz opcję z pola 'name'",
 			userText: "wybierz opcję z pola 'userName'",
 			idText: "wprowadź numer id",
+			badData: "użytkownik o podanych parametrach nie istnieje w bazie"
 		};
 		
 		fetchData(this.config);
 		this.bus = new EventBus();	
-		this.tab = new Tab({bus: this.bus});	
-		this.form = new Form();			
-		this.tab.comment = this.config.comment;
-		this.tab.table = this.config.table;
-		
-		
-		let that = this;
-			
-		this.config.submit.addEventListener("click", function(){
-			that.config.comment.innerHTML = "";
-			that.form.inputsValue(that.config.inputsDiv);
-			if(checkName(that.form) && checkUser(that.form) && checkId(that.form)){			
-				
-				that.bus.post("string", that.form.jsonObj);			
-				
-			}else{		
-				if(!checkName(that.form)){
-					createPara(that.config.comment, that.config.nameText);
-				}		
-				if(!checkUser(that.form)){
-					createPara(that.config.comment, that.config.userText);
-				}
-				if(!checkId(that.form)){
-					createPara(that.config.comment, that.config.idText);
-				}
-			}
-		});
-		this.config.popBut.addEventListener("click", function(){
-			that.config.popDiv.className = "nonePop";
-		});		
+		this.tab = new Tab({bus: this.bus, config: this.config});	
+		this.form = new Form({bus: this.bus, config: this.config});					
 		
 	};
 })(this);
