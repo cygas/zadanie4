@@ -1,6 +1,6 @@
 (function(global){
 	
-	global.Form = function({bus: bus, config: config}){
+	global.Form = function({bus, config}){
 			
 		this.init = function(){
 			this.inputsDiv = config.inputsDiv;
@@ -29,7 +29,7 @@
 						break;
 				}
 				if(val == false)
-					createPara(this.comment, txt);
+					ElementCreator.factory("para", this.comment, txt);
 			}.bind(this);
 		}.bind(this);
 		

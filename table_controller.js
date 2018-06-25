@@ -1,6 +1,6 @@
 (function(global){
 	
-	global.Tab = function({bus: bus, config: config}){
+	global.Tab = function({bus, config}){
 		this.init = function(){
 			this.comment = config.comment;
 			this.badData = config.badData;
