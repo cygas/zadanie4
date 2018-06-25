@@ -1,33 +1,38 @@
 (function(global){
 	
-	global.Tab = function({bus: bus}){
+	global.Tab = function({bus: bus, config: config}){
+		this.init = function(){
+			this.comment = config.comment;
+			this.badData = config.badData;
+			this.table = config.table;
+			this.popBut = config.popBut;
+			this.popDiv = config.popDiv;
+			this.bus = bus;
+			this.obj = {};
+			this.url = "";
+		}.bind(this);
+		
+		this.init();
+		
 		this.sendRequest = function(jsonObj){			
-			let badData = "użytkownik o podanych parametrach nie istnieje w bazie";
+		
 			this.obj = JSON.parse(jsonObj);
 			this.url = "https://jsonplaceholder.typicode.com/users?" + "id=" + this.obj.id + "&name=" + this.obj.name + "&username=" + this.obj.username + "&email=" + this.obj.email;
 			
-			getData(this.url, this.comment, badData, this.table);
+			getData(this.url, config.comment, config.badData, config.table);
 			
 			
 			return this;
 		};
-		bus.subscribe("string", this.sendRequest);
 		
-		this.obj = {};
-		this.url = "";			
+		this.bus.subscribe("string", this.sendRequest);
+		
+		this.popBut.addEventListener("click", function(){
+			this.popDiv.className = "nonePop";
+		}.bind(this));		
 		
 	};	
 	
-	global.Container = function(args){
-		this.init = function(key){
-			this.send();
-		};
-		this.send = function(){
-			
-		};
-		this.init(args);
-		
-	};
 	/*
 	global.Container = function(args) {
 		let key1;

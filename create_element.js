@@ -1,3 +1,4 @@
+//const CLIENT = 'CLIENT';
 (function(global){
 	
 	global.createRadio = function(radioDiv, num){
