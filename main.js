@@ -22,9 +22,6 @@
 				selectNum: 10,
 				textNum: 1,
 				url: "https://jsonplaceholder.typicode.com/users",
-				nameText: "wybierz opcję z pola 'name'",
-				userText: "wybierz opcję z pola 'userName'",
-				idText: "wprowadź numer id",
 				badData: "użytkownik o podanych parametrach nie istnieje w bazie"
 			};
 		}.bind(this);

@@ -6,9 +6,6 @@
 			this.inputsDiv = config.inputsDiv;
 			this.submit = config.submit;
 			this.comment = config.comment;
-			this.nameText = config.nameText;
-			this.userText = config.userText;
-			this.idText = config.idText;	
 			this.bus = bus;
 			this.obj = {
 				name: null,
@@ -16,26 +13,7 @@
 				email: null,
 				id: null
 			};
-			this.jsonObj = "";	
-			this.everyTrue = function(item){
-				return item == true
-			};				
-			this.checkIfFalse = function(val, index){
-				let txt;
-				switch(index){
-					case 0:
-						txt = this.nameText;
-						break;
-					case 1:
-						txt = this.userText;
-						break;
-					case 2:
-						txt = this.idText;
-						break;
-				}
-				if(val == false)
-					ElementCreator.factory("para", this.comment, txt);
-			}.bind(this);
+			this.jsonObj = "";				
 		}.bind(this);
 		
 		this.init();
