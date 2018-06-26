@@ -1,51 +1,73 @@
 (function(global){
+
+	global.validator = {
 	
-	global.Validator = {};
-	
-	let checkName = function(obj){
-		return obj.name != undefined;			
-	};
-	let checkUser = function(obj){
-		return obj.username != undefined;			
-	};
-	let checkId = function(obj){
-		return obj.id != "";		
-	};	
-	Validator.checkName = checkName;
-	Validator.checkUser = checkUser;
-	Validator.checkId = checkId;
-	
-	/*
-	global.checkName = function(form){
-		return form.obj.name != undefined;			
-	};
-	global.checkUser = function(form){
-		return form.obj.username != undefined;			
-	};
-	global.checkId = function(form){
-		return form.obj.id != "";		
-	};	
-	*/
-	
-	/*
-		global.Validator = {};
-		Validator.checkName = function(){}
+		types: {},
 		
-		let checkName = function(){}
-		Validator.checkName = checkName
+		messages: [],
 		
-		Validator.prototype.checkName = checkName
+		config: {},
 		
-		global.Check = function(form){
-		this.checkName = function(form){
-			return form.obj.name != undefined;			
-		};
-		this.checkUser = function(form){
-			return form.obj.username != undefined;			
-		};
-		this.checkId = function(form){
-			return form.obj.id != "";		
-		};	
+		validate: function(data){
+			let i, msg, type, checker, result_ok;
+			
+			this.messages = [];
+			
+			for(i in data){
+				if(data.hasOwnProperty(i)){
+					type = this.config[i];
+					checker = this.types[type];
+					
+					if(!type){
+						continue;
+					}
+					if(!checker){
+						throw {
+							name: "ValidationError",
+							message: "brak obsługi dla klucza " + type
+						};
+					}
+					result_ok = checker.validate(data[i]);
+					if(!result_ok){
+						msg = "niepoprawna wartość *" + i + "*; " + checker.instructions;
+						this.messages.push(msg);
+					}
+				}
+			}
+			
+			return this.hasErrors();
+		},
+		
+		hasErrors: function(){
+			return this.messages.length !== 0;
+		}		
 	};
-	*/
+	
+	validator.config = {
+		name: 'isChecked',
+		username: 'isChecked',
+		id: 'isNotEmpty',
+		email: 'isEmail'
+	};
+	
+	validator.types.isChecked = {
+		validate: function(value){
+			return value != undefined;
+		},
+		instructions: "należy zaznaczyć jedno z pól"
+	};
+	
+	validator.types.isNotEmpty = {
+		validate: function(value){
+			return value != "" && !isNaN(value);
+		},
+		instructions: "należy uzupełnić pole"
+	};
+	validator.types.isEmail = {
+		validate: function(value){
+			return true;
+		},
+		instructions: ""
+	};
+	
 })(this);

@@ -2,7 +2,7 @@
 	global.writeListener = function(obj){
 		let footer = document.getElementById("footer");
 		let txt = JSON.stringify(obj);
-		createPara(footer, txt);		
+		ElementCreator.factory("para", footer, txt);		
 	};
 	global.popupListener = function(obj){
 		let div = document.getElementById("popup");		

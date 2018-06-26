@@ -9,13 +9,18 @@
 			json.map(entry => {
 				config.arr.push(entry);
 			});		
-			createRadio(config.radioDiv, config.radioNum);
-			createCheckbox(config.checkboxDiv, config.chkbxoNum);
-			createSelect(config.selectDiv, config.selectNum, 190);
-			createText(config.textDiv, config.textNum, 190);	
-			addName(config.arr, config.radioDiv, "name", config.radioNum);
-			addName(config.arr, config.checkboxDiv, "username", config.chkbxoNum);
-			addOption(config.arr, config.selectDiv, "email", config.selectNum);			
+			
+			ElementCreator.factory("radio", config.radioDiv, config.radioNum);
+			ElementCreator.factory("checkbox", config.checkboxDiv, config.chkbxoNum);
+			ElementCreator.factory("select", config.selectDiv, config.selectNum);			
+			ElementCreator.factory("text", config.textDiv, config.textNum);			
+			//createRadio(config.radioDiv, config.radioNum);
+			//createCheckbox(config.checkboxDiv, config.chkbxoNum);
+			//createSelect(config.selectDiv, config.selectNum, 190);
+			//createText(config.textDiv, config.textNum, 190);	
+			addValue(config.arr, config.radioDiv, "name", config.radioNum, "label");
+			addValue(config.arr, config.checkboxDiv, "username", config.chkbxoNum, "label");
+			addValue(config.arr, config.selectDiv, "email", config.selectNum, "option");			
 		});	
 	};
 	
@@ -27,9 +32,10 @@
 		.then(function(json){
 			let object = json[0];
 			if(object != undefined){
-				createRow(table, object, createTableButton1(), createTableButton2());						
+				ElementCreator.factory("row", table, object);	
+				//createRow(table, object, createTableButton1(), createTableButton2());						
 			}else{				
-				createPara(com, txt);				
+				ElementCreator.factory("para", com, txt);				
 			}			
 		});
 	};

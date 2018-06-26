@@ -1,6 +1,6 @@
 (function(global){
 	
-	global.Form = function({bus: bus, config: config}){
+	global.Form = function({bus, config}){
 			
 		this.init = function(){
 			this.inputsDiv = config.inputsDiv;
@@ -10,7 +10,12 @@
 			this.userText = config.userText;
 			this.idText = config.idText;	
 			this.bus = bus;
-			this.obj = {};
+			this.obj = {
+				name: null,
+				username: null,
+				email: null,
+				id: null
+			};
 			this.jsonObj = "";	
 			this.everyTrue = function(item){
 				return item == true
@@ -29,7 +34,7 @@
 						break;
 				}
 				if(val == false)
-					createPara(this.comment, txt);
+					ElementCreator.factory("para", this.comment, txt);
 			}.bind(this);
 		}.bind(this);
 		
@@ -65,13 +70,14 @@
 			this.comment.innerHTML = "";
 			this.inputsValue(this.inputsDiv);	
 		
-			let checkArr = [Validator.checkName(this.obj), Validator.checkUser(this.obj), Validator.checkId(this.obj)];
-			
-			if(checkArr.every(this.everyTrue)){					
-				this.bus.post("string", this.jsonObj);							
-			}else{	
-				checkArr.forEach(this.checkIfFalse);
-			}
+			validator.validate(this.obj);
+			if (!validator.hasErrors()) {
+				this.bus.post("string", this.jsonObj);		
+			}else{
+				for(d in validator.messages){
+					ElementCreator.factory("para", this.comment, validator.messages[d]);
+				}
+			}						
 		}.bind(this));		
 	};
 	
